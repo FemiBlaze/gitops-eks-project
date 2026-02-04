@@ -10,6 +10,6 @@ npm start
 
 ## Run with Docker
 ```bash
-npm install
-npm start
+docker build -t gitops-app .
+docker run -p 3000:3000 gitops-app
 
