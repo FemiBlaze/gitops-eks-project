@@ -1,0 +1,84 @@
+############################
+# OS / Editor junk
+############################
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+############################
+# Node.js (app/)
+############################
+app/node_modules/
+app/npm-debug.log*
+app/yarn-error.log*
+app/.env
+app/.env.*
+app/dist/
+app/build/
+
+############################
+# AWS credentials (CRITICAL)
+############################
+.aws/
+**/.aws/
+aws-credentials*
+aws-config*
+
+# Explicit AWS credential files
+credentials
+config
+
+############################
+# Terraform (terraform/)
+############################
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/crash.log
+terraform/crash.*.log
+
+# Sensitive variable files
+terraform/*.tfvars
+terraform/*.tfvars.json
+
+# Terraform override files
+terraform/override.tf
+terraform/override.tf.json
+terraform/*_override.tf
+terraform/*_override.tf.json
+
+############################
+# Kubernetes / GitOps
+############################
+k8s/**/.kubeconfig
+k8s/**/secrets.yaml
+*.kubeconfig
+
+############################
+# GitHub Actions
+############################
+.github/workflows/*.log
+
+############################
+# Security / Secrets (global)
+############################
+*.pem
+*.key
+*.crt
+*.p12
+*.env
+*.secret
+*.secrets
+
+############################
+# Logs & temp files
+############################
+*.log
+*.tmp
+
