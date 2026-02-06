@@ -1,19 +1,26 @@
-# GitOps Demo Application
+# Application Overview
 
-This is a minimal Node.js application used to demonstrate
-a production-style GitOps Kubernetes deployment on AWS.
+This is a simple Node.js web application used to demonstrate
+containerization, CI pipelines, and GitOps deployment.
 
+## Responsibilities
+- Produce a Docker image
+- Remain stateless
+- Be deployable via Kubernetes
 
+# ==================
 # Run Locally
+# ==================
 
 ```bash
 npm install
 npm start
 
-
+# ==================
 # Run with Docker
+# ==================
 
 ```bash
-docker build -t gitops-app .
-docker run -p 3000:3000 gitops-app
+docker build -t app:test .
+docker run -p 3000:3000 app:test
 
