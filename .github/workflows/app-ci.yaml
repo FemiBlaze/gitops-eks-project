@@ -1,0 +1,50 @@
+name: App CI
+
+on:
+  push:
+    paths:
+      - "app/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Configure AWS credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # 3. Login to Amazon ECR
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      # 4. Set ECR repository URI
+      - name: Set ECR repository URI
+        run: |
+          echo "ECR_REPO=251894223238.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/gitops-eks-project" >> $GITHUB_ENV
+
+      # 5. Build Docker image
+      - name: Build Docker image
+        run: |
+          echo "Building image: $ECR_REPO:${{ github.sha }}"
+          docker build \
+            -t $ECR_REPO:${{ github.sha }} \
+            ./app
+
+      # 6. Push Docker image
+      - name: Push Docker image
+        run: |
+          docker push $ECR_REPO:${{ github.sha }}
+
+
+
+
+
