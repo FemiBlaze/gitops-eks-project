@@ -17,7 +17,7 @@ npm install
 npm start
 
 # ==================
-# Run with Docker
+# Run with Docker.
 # ==================
 
 ```bash
