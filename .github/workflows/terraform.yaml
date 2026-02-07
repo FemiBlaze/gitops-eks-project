@@ -39,6 +39,12 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      # 5. Terraform Import (for existing IAM roles)
+      - name: Terraform Import IAM Roles
+        run: |
+          terraform import aws_iam_role.eks_cluster_role eks-cluster-role || true
+          terraform import aws_iam_role.eks_node_role eks-node-role || true
+
       # 5. Terraform Plan
       - name: Terraform Plan
         run: terraform plan
