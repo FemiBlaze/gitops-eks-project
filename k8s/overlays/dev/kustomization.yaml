@@ -4,9 +4,8 @@ kind: Kustomization
 namespace: gitops-demo
 
 resources:
-  - ../../base/namespace.yaml
-  - ../../base/deployment.yaml
-  - ../../base/service.yaml
+  - ../../base
 
 patchesStrategicMerge:
   - deployment-patch.yaml
+
