@@ -24,4 +24,4 @@ resource "aws_eks_node_group" "managed" {
     aws_iam_role_policy_attachment.registry_policy
   ]
 }
-
+# trigger terraform workflow
