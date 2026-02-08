@@ -1,0 +1,11 @@
+destination:
+  server: https://kubernetes.default.svc
+  namespace: gitops-demo
+
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
+
