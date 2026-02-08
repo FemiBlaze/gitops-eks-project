@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gitops-demo
+  name: app
+  namespace: app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gitops-app
+      app: app
   template:
     metadata:
       labels:
-        app: gitops-app
+        app: app
     spec:
       containers:
         - name: app
-          image: YOUR_IMAGE_HERE
+          image: <YOUR_ECR_OR_REGISTRY_IMAGE>:<TAG>
           ports:
             - containerPort: 3000
+
